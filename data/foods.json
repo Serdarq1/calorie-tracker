@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Greek Yogurt (plain)",
+    "calories": 120,
+    "serving": "170 g cup",
+    "category": "Protein"
+  },
+  {
+    "name": "Overnight Oats",
+    "calories": 320,
+    "serving": "1 jar",
+    "category": "Breakfast"
+  },
+  {
+    "name": "Blueberries",
+    "calories": 85,
+    "serving": "1 cup",
+    "category": "Fruit"
+  },
+  {
+    "name": "Cold Brew Coffee",
+    "calories": 5,
+    "serving": "12 fl oz",
+    "category": "Beverage"
+  },
+  {
+    "name": "Avocado Toast",
+    "calories": 260,
+    "serving": "1 slice",
+    "category": "Snack"
+  },
+  {
+    "name": "Protein Shake",
+    "calories": 210,
+    "serving": "1 scoop + water",
+    "category": "Protein"
+  },
+  {
+    "name": "Chicken Buddha Bowl",
+    "calories": 540,
+    "serving": "1 bowl",
+    "category": "Lunch"
+  },
+  {
+    "name": "Sparkling Water",
+    "calories": 0,
+    "serving": "8 fl oz",
+    "category": "Beverage"
+  },
+  {
+    "name": "Matcha Latte (oat milk)",
+    "calories": 180,
+    "serving": "12 fl oz",
+    "category": "Beverage"
+  },
+  {
+    "name": "Salmon Grain Bowl",
+    "calories": 610,
+    "serving": "1 bowl",
+    "category": "Dinner"
+  },
+  {
+    "name": "Trail Mix",
+    "calories": 190,
+    "serving": "1/4 cup",
+    "category": "Snack"
+  },
+  {
+    "name": "Citrus Electrolyte Drink",
+    "calories": 45,
+    "serving": "12 fl oz",
+    "category": "Hydration"
+  }
+]

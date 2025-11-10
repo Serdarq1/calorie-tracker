@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FuelFox | Calorie Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="tag">FuelFox</p>
+        <h1>Personal calorie tracking with a coaching vibe.</h1>
+        <p>Answer a few quick questions, get tailored guidance, then add or search foods to stay on track.</p>
+      </div>
+      <div class="hero-visual">
+        <div class="orb orb-top"></div>
+        <div class="orb orb-bottom"></div>
+        <div class="stat-card">
+          <p>Estimated target</p>
+          <h2 id="heroCalorieGoal">– kcal</h2>
+          <p class="sub">based on your answers</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="panel onboarding">
+        <div class="panel-head">
+          <h2>Kickoff questions</h2>
+          <p class="muted">3 quick answers unlock your personalized nudges.</p>
+        </div>
+        <form id="onboardingForm" class="stack gap-m">
+          <label class="field">
+            <span class="field-label">Primary goal</span>
+            <select name="goal" required>
+              <option value="">Select one</option>
+              <option value="lose">Lose weight</option>
+              <option value="maintain">Maintain weight</option>
+              <option value="gain">Gain lean mass</option>
+              <option value="fuel">Fuel endurance</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Daily activity level</span>
+            <select name="activity" required>
+              <option value="">Pick your vibe</option>
+              <option value="sedentary">Desk day (sedentary)</option>
+              <option value="light">Lightly active</option>
+              <option value="moderate">Moderately active</option>
+              <option value="intense">Training daily</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Meals per day</span>
+            <input type="number" name="meals" min="1" max="8" placeholder="e.g. 3" required>
+          </label>
+          <button type="submit" class="primary">Generate nudges</button>
+        </form>
+      </section>
+
+      <section class="panel suggestions">
+        <div class="panel-head">
+          <h2>Your tailored nudges</h2>
+          <p class="muted">Auto-refresh when you change onboarding answers.</p>
+        </div>
+        <div id="suggestionList" class="stack gap-s muted">
+          <p>Complete the questions to see your plan.</p>
+        </div>
+      </section>
+
+      <section class="panel add-food">
+        <div class="panel-head">
+          <h2>Log something</h2>
+          <p class="muted">Quick add for meals, snacks, or beverages.</p>
+        </div>
+        <form id="addFoodForm" class="stack gap-m">
+          <label class="field">
+            <span class="field-label">Item name</span>
+            <input type="text" name="name" placeholder="e.g. Overnight oats" required>
+          </label>
+          <label class="field">
+            <span class="field-label">Calories</span>
+            <input type="number" name="calories" min="0" placeholder="e.g. 320" required>
+          </label>
+          <label class="field">
+            <span class="field-label">Meal slot</span>
+            <select name="meal" required>
+              <option value="">Choose</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="snack">Snack</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Time</span>
+            <input type="time" name="time" required>
+          </label>
+          <button type="submit" class="secondary">Add to log</button>
+        </form>
+        <ul id="foodLog" class="log-list"></ul>
+      </section>
+
+      <section class="panel search">
+        <div class="panel-head">
+          <h2>Search the pantry</h2>
+          <p class="muted">Powered by the starter JSON data—swap in a real API later.</p>
+        </div>
+        <form method="post" action="{{url_for('search_calorie')}}">
+          <div class="stack gap-s">
+          <label class="field">
+            <span class="field-label">Food or beverage</span>
+            <input type="search" id="searchInput" name="search-bar" placeholder="Type to explore...">
+          </label>
+          <button type="submit" class="primary">Search Food</button>
+          <ul id="searchResults" class="result-list">
+            {% if food %}
+              <li class="log-row"> <div>
+                {{food.title()}} Calories: {{calories}}<br>
+                Serving: {{serving.title()}}<br>
+                Category: {{category.title()}}
+              </div> </li>
+            {% endif %}
+          </ul>
+        </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <template id="logItemTemplate">
+    <li class="log-row">
+      <div>
+        <p class="log-title"></p>
+        <p class="muted log-meta"></p>
+      </div>
+      <span class="log-cal"></span>
+    </li>
+  </template>
+
+  <script src="../static/app.js" type="module"></script>
+</body>
+</html>
